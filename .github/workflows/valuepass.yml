@@ -2,7 +2,7 @@ name: Value Passing Workflow
 
 on:
   workflow_dispatch:
-    input:
+    inputs:
       sample_input:
         description: 'A sample input value'
         required: true
