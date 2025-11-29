@@ -2,7 +2,7 @@ name: Cron Workflow
 
 on:
   schedule:
-    - cron: '5 * * * *'
+     - cron: '*/5 * * * *'
 
 jobs:
   Cron_Job:
