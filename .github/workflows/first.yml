@@ -11,5 +11,3 @@ jobs:
     steps:
       - name: First Step:
           run: echo "This is the first step of the first job."
-      - name: Second Step:
-          run: echo "This is the second step of the first job."
