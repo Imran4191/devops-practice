@@ -1,0 +1,29 @@
+name: Value Passing Workflow
+
+on:
+  workflow_dispatch:
+    input:
+      sample_input:
+        description: 'A sample input value'
+        required: true
+        default: 'Default Value'
+
+
+jobs:
+  get_value_job:
+    runs-on: ubuntu-latest
+    outputs:
+      generated_message: ${{ steps.get_value.outputs.value }}
+    steps:
+      - name: get value Step
+        id: get_value
+        run: |
+          echo "value=${{ github.event.inputs.sample_input }}" >> $GITHUB_OUTPUT
+  
+  use_value_job:
+    runs-on: ubuntu-latest
+    needs: get_value_job
+    steps:
+      - name: use value Step
+        run: |
+          echo "The passed value is: ${{ needs.get_value_job.outputs.generated_message }}"
