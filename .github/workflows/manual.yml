@@ -1,0 +1,13 @@
+name: Manual Workflow on click
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Manual_Job:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: First Step
+        run: |
+          echo "This is the first step of the manual job."
