@@ -1,0 +1,30 @@
+name: Dependent Workflow
+
+on:
+  workflow_run:
+
+jobs:
+  First_Job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: First job Step
+        run: |
+          echo "This is the dependent job that runs after the specified workflows."
+
+  Second_Job:
+    runs-on: ubuntu-latest
+    needs: First_Job
+
+    steps:
+      - name: Second job Step
+        run: |
+          echo "This is the second step of the dependent job."
+          
+  Third_Job:
+    runs-on: ubuntu-latest
+    needs: [First_Job, Second_Job]
+    steps:
+      - name: Third job Step
+        run: |
+          echo "This is the third step of the dependent job."
