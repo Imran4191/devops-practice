@@ -1,7 +1,7 @@
 name: Dependent Workflow
 
 on:
-  workflow_run:
+  workflow_dispatch:
 
 jobs:
   First_Job:
@@ -20,7 +20,7 @@ jobs:
       - name: Second job Step
         run: |
           echo "This is the second step of the dependent job."
-          
+
   Third_Job:
     runs-on: ubuntu-latest
     needs: [First_Job, Second_Job]
